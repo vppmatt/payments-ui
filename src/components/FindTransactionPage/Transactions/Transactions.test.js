@@ -4,7 +4,7 @@ import {BrowserRouter} from "react-router-dom";
 
 jest.mock('../../../data/DataFunctions', () => {
     return {
-        getCountries: () => Promise.resolve({data: {country: ['a', 'b', 'c']}})
+        getCountries: () => Promise.resolve({data: ['a', 'b', 'c']})
     };
 });
 
@@ -24,7 +24,7 @@ test('all countries are displayed', async () => {
         <Transactions/>
     </BrowserRouter>);
 
-    const options = await screen.findAllByRole('option', {}, 2000);   //note could find by ID but this is a chance to use findByRole!
+        const options = await screen.findAllByRole('option', {}, 2000);   //note could find by ID but this is a chance to use findByRole!
 
     expect(options).toHaveLength(4);
 
